@@ -7,9 +7,9 @@ import Tasks from '@/components/Tasks/Tasks'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [tasks, setTasks] = useState([])
 
   const fetchTasks = async (taskText) => {
     setIsLoading(true)
