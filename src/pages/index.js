@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import { Fragment, useEffect, useState } from 'react'
 import NewTask from '@/components/NewTask/NewTask'
 import Tasks from '@/components/Tasks/Tasks'
@@ -13,39 +12,39 @@ export default function Home() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async (taskText) => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
     try {
       const response = await fetch(
         'https://react-http-fb501-default-rtdb.europe-west1.firebasedatabase.app/task.json'
-      );
+      )
 
       if (!response.ok) {
-        throw new Error('Request failed!');
+        throw new Error('Request failed!')
       }
 
-      const data = await response.json();
+      const data = await response.json()
 
-      const loadedTasks = [];
+      const loadedTasks = []
 
       for (const taskKey in data) {
-        loadedTasks.push({ id: taskKey, text: data[taskKey].text });
+        loadedTasks.push({ id: taskKey, text: data[taskKey].text })
       }
 
-      setTasks(loadedTasks);
+      setTasks(loadedTasks)
     } catch (err) {
-      setError(err.message || 'Something went wrong!');
+      setError(err.message || 'Something went wrong!')
     }
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    fetchTasks()
+  }, [])
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
-  };
+  }
   return (
     <>
       <Head>
@@ -54,7 +53,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main>
         <Fragment>
           <NewTask onAddTask={taskAddHandler} />
           <Tasks
