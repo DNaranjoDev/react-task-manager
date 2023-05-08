@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
 import { Fragment, useEffect, useState } from 'react'
 import NewTask from '@/components/NewTask/NewTask'
 import Tasks from '@/components/Tasks/Tasks'
 import useHttp from '@/hooks/use-http'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [tasks, setTasks] = useState([])
